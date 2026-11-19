@@ -32,8 +32,10 @@ export default function App() {
     setLoading(true); setError('')
     try {
       const order = tab === 'Populer' ? 'followedCount' : tab === 'Rating' ? 'rating' : 'latestUploadedChapter'
-      const params = new URLSearchParams({ limit: '24', offset: '0' })
-      params.append('includes[]', 'cover_art')
+      const params = new URLSearchParams()
+      params.set('limit', '24')
+      params.set('offset', '0')
+      params.set('includes[]', 'cover_art')
       params.set(`order[${order}]`, 'desc')
       params.append('contentRating[]', 'safe')
       params.append('contentRating[]', 'suggestive')
